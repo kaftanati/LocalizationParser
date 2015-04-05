@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Locale Parser'
-  ClientHeight = 470
+  ClientHeight = 519
   ClientWidth = 704
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,12 +14,12 @@ object Form1: TForm1
   OldCreateOrder = False
   DesignSize = (
     704
-    470)
+    519)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 183
-    Top = 20
+    Left = 248
+    Top = 13
     Width = 34
     Height = 13
     Caption = 'Found:'
@@ -35,17 +35,16 @@ object Form1: TForm1
     OnClick = ButtonSaveClick
   end
   object MemoFound: TMemo
-    Left = 183
+    Left = 248
     Top = 39
-    Width = 513
-    Height = 423
+    Width = 448
+    Height = 472
     Anchors = [akLeft, akTop, akRight, akBottom]
     Lines.Strings = (
       '')
     ScrollBars = ssBoth
     TabOrder = 1
-    ExplicitWidth = 517
-    ExplicitHeight = 434
+    ExplicitHeight = 527
   end
   object ButtonParse: TButton
     Left = 459
@@ -59,11 +58,14 @@ object Form1: TForm1
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Top = 215
-    Width = 169
+    Top = 263
+    Width = 234
     Height = 106
     Caption = 'Base project markers'
     TabOrder = 3
+    DesignSize = (
+      234
+      106)
     object Label2: TLabel
       Left = 9
       Top = 19
@@ -79,38 +81,47 @@ object Form1: TForm1
       Caption = 'Localized text'
     end
     object etCommon: TEdit
-      Left = 127
+      Left = 192
       Top = 16
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '3'
+      ExplicitLeft = 127
     end
     object etLocalized: TEdit
-      Left = 127
+      Left = 192
       Top = 43
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '4'
+      ExplicitLeft = 127
     end
     object ButtonAvtoFM: TButton
       Left = 9
       Top = 71
-      Width = 151
+      Width = 216
       Height = 25
+      Anchors = [akLeft, akTop, akRight]
       Caption = 'Generate base strings'
       TabOrder = 2
       OnClick = ButtonAvtoFMClick
+      ExplicitWidth = 151
     end
   end
   object GroupBox2: TGroupBox
     Left = 8
-    Top = 327
-    Width = 169
+    Top = 375
+    Width = 234
     Height = 137
     Caption = 'Inheritor project markers'
     TabOrder = 4
+    DesignSize = (
+      234
+      137)
     object Label4: TLabel
       Left = 9
       Top = 19
@@ -133,37 +144,45 @@ object Form1: TForm1
       Caption = 'Replacing localized text'
     end
     object etAddCommon: TEdit
-      Left = 127
+      Left = 192
       Top = 16
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '6'
+      ExplicitLeft = 127
     end
     object etAddLocalized: TEdit
-      Left = 127
+      Left = 192
       Top = 43
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '7'
+      ExplicitLeft = 127
     end
     object ButtonAvtoCE: TButton
       Left = 9
       Top = 101
-      Width = 151
+      Width = 216
       Height = 25
+      Anchors = [akLeft, akTop, akRight]
       Caption = 'Generate updated strings'
       TabOrder = 2
       OnClick = ButtonAvtoCEClick
+      ExplicitWidth = 151
     end
     object etAddReplacing: TEdit
-      Left = 127
+      Left = 192
       Top = 71
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 3
       Text = '5'
+      ExplicitLeft = 127
     end
   end
   object ButtonOpen: TButton
@@ -178,11 +197,14 @@ object Form1: TForm1
   end
   object GroupBox3: TGroupBox
     Left = 8
-    Top = 103
-    Width = 169
+    Top = 151
+    Width = 234
     Height = 106
     Caption = 'Main markers'
     TabOrder = 6
+    DesignSize = (
+      234
+      106)
     object Label7: TLabel
       Left = 9
       Top = 21
@@ -205,37 +227,46 @@ object Form1: TForm1
       Caption = 'Parent language code'
     end
     object etComment: TEdit
-      Left = 127
+      Left = 192
       Top = 18
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '0'
+      ExplicitLeft = 127
     end
     object etlanguageCode: TEdit
-      Left = 127
+      Left = 192
       Top = 46
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '1'
+      ExplicitLeft = 127
     end
     object etLanguageParentCode: TEdit
-      Left = 127
+      Left = 192
       Top = 74
       Width = 33
       Height = 21
+      Anchors = [akTop, akRight]
       TabOrder = 2
       Text = '2'
+      ExplicitLeft = 127
     end
   end
   object GroupBox4: TGroupBox
     Left = 8
     Top = 8
-    Width = 169
+    Width = 234
     Height = 89
     Caption = 'General settings'
     TabOrder = 7
+    DesignSize = (
+      234
+      89)
     object Label10: TLabel
       Left = 9
       Top = 19
@@ -246,10 +277,12 @@ object Form1: TForm1
     object etFilename: TEdit
       Left = 9
       Top = 38
-      Width = 151
+      Width = 216
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
       Text = 'Localization - String.tsv'
+      ExplicitWidth = 151
     end
     object chbAutoexit: TCheckBox
       Left = 9
@@ -271,6 +304,24 @@ object Form1: TForm1
     Caption = 'Clear'
     TabOrder = 8
     OnClick = ButtonClearMemoClick
+  end
+  object GroupBox5: TGroupBox
+    Left = 8
+    Top = 103
+    Width = 234
+    Height = 42
+    Caption = 'Output options'
+    TabOrder = 9
+    object chbTransable: TCheckBox
+      Left = 9
+      Top = 19
+      Width = 200
+      Height = 17
+      Caption = 'Add [translatable="false"] to common text'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+    end
   end
   object OpenDialog1: TOpenDialog
     Left = 328

@@ -4,10 +4,12 @@ interface
 
 const
 
- comment_code = '0';
- lang_code = '1';
- lang_parent_code = '2';
+  comment_code = '0';
+  lang_code = '1';
+  lang_parent_code = '2';
 
+  localed_type = 1;
+  common_type = 2;
 
 type
   TColumns = array of string;
@@ -24,7 +26,7 @@ Var
   values: array of Value; // массив ресурсов
   locales: array of string; // массив локалей
   loc_ready: array of boolean; // массив готовностей локалей
-  alias_locales: array of string;  // массив локалей-подстановок
+  alias_locales: array of string; // массив локалей-подстановок
   value_count: integer;
   locale_count: integer;
   fileMemo: text;

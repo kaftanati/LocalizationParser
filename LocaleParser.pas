@@ -40,6 +40,8 @@ type
     etFilename: TEdit;
     chbAutoexit: TCheckBox;
     ButtonClearMemo: TButton;
+    GroupBox5: TGroupBox;
+    chbTransable: TCheckBox;
     procedure ButtonOpenClick(Sender: TObject);
     procedure ButtonSaveClick(Sender: TObject);
     procedure ButtonParseClick(Sender: TObject);
@@ -110,8 +112,7 @@ procedure TForm1.FileToMemo();
 begin
   OpenDialog1.Title := 'Choose file';
   OpenDialog1.InitialDir := GetCurrentDir;
-  OpenDialog1.Filter :=
-    'TSV files (*.tsv)|*.tsv|All files (*.*)|*.*';
+  OpenDialog1.Filter := 'TSV files (*.tsv)|*.tsv|All files (*.*)|*.*';
   if OpenDialog1.Execute then
   begin
     MemoFound.Lines.Clear;
@@ -178,13 +179,12 @@ begin
   for j := 1 to locale_count do
     if loc_ready[j] then
     begin
-      if (j = 1) then
-      AssignFile(filexml, 'res\values\string.xml')
+      if (j = 1) then // base locale
+        AssignFile(filexml, 'res\values\string.xml')
       else
       begin
         CreateDir('res\values-' + locales[j]);
-        AssignFile(filexml,
-          'res\values-' + locales[j] + '\string.xml');
+        AssignFile(filexml, 'res\values-' + locales[j] + '\string.xml');
       end;
 
       ReWrite(filexml);
@@ -197,7 +197,7 @@ begin
         if (values[i].val[j] <> '') then
         begin
 
-          if values[i].typ = 1 then
+          if values[i].typ = localed_type then
           begin
 
             if values[i].section <> '' then
@@ -210,11 +210,10 @@ begin
               WriteLn(filexml, '    <!-- ' + values[i].category + ' -->');
             if values[i].name <> '' then
               WriteLn(filexml,
-                '    <string name="' + values[i].name + '">' + values[i].val
-                  [j] + '</string>');
+                '    <string name="' + values[i].name + '">' + values[i].val[j] + '</string>');
           end;
 
-          if (values[i].typ = 2) and (j = 1) then
+          if (values[i].typ = common_type) and (j = 1) then   // common text of base locale
           begin
             if values[i].section <> '' then
               WriteLn(filecom);
@@ -225,9 +224,16 @@ begin
             if values[i].category <> '' then
               WriteLn(filecom, '    <!-- ' + values[i].category + ' -->');
             if values[i].name <> '' then
-              WriteLn(filecom,
-                '    <string name="' + values[i].name + '">' + values[i].val
-                  [j] + '</string>');
+            begin
+
+              if chbTransable.Checked then
+                WriteLn(filecom,
+                  '    <string name="' + values[i].name + '" translatable="false">' + values[i].val
+                    [j] + '</string>')
+              else
+                WriteLn(filecom,
+                  '    <string name="' + values[i].name + '">' + values[i].val[j] + '</string>');
+            end;
           end;
         end;
       end;
@@ -263,7 +269,7 @@ begin
   if (c = etlanguageCode.Text[1]) then
     ParseLocales(strbuff);
 
-  if (c = etLanguageparentCode.Text[1]) then
+  if (c = etLanguageParentCode.Text[1]) then
     ParseAliasLocales(strbuff);
 
   if (c = etCommon.Text[1]) then
@@ -322,8 +328,7 @@ begin
   for i := 1 to locale_count do
   begin
     alias_locales[i] := res[i + 4];
-    LogAdd('locale[' + IntToStr(i) + '] = ' + locales[i] + ' [' + alias_locales
-        [i] + ']');
+    LogAdd('locale[' + IntToStr(i) + '] = ' + locales[i] + ' [' + alias_locales[i] + ']');
   end;
 end;
 
@@ -338,7 +343,7 @@ begin
 
   SetLength(values[value_count].val, locale_count + 1);
 
-  values[value_count].typ := 1;
+  values[value_count].typ := localed_type;
   values[value_count].section := res[2];
   values[value_count].category := res[3];
   values[value_count].name := res[4];
@@ -359,7 +364,7 @@ begin
   for i := 0 to value_count do
     if (values[i].name = res[4]) then
     begin
-      values[i].typ := 1;
+      values[i].typ := localed_type;
       values[i].section := res[2];
       values[i].category := res[3];
       values[i].name := res[4];
@@ -381,7 +386,7 @@ begin
 
   SetLength(values[value_count].val, locale_count + 1);
 
-  values[value_count].typ := 2;
+  values[value_count].typ := common_type;
   values[value_count].section := res[2];
   values[value_count].category := res[3];
   values[value_count].name := res[4];
@@ -401,8 +406,7 @@ begin
 
   for i := 1 to value_count do
     for j := 1 to locale_count do
-      if ((values[i].val[j] = '') AND ((values[i].typ = 1) OR
-            (values[i].typ = 6))) then
+      if ((values[i].val[j] = '') AND ((values[i].typ = localed_type))) then
       begin
         // LogAdd('name [] = ' + values[i].name);
         // LogAdd('alias_locales = ' + alias_locales[j]);
