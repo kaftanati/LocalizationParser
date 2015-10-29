@@ -44,7 +44,6 @@ object Form1: TForm1
       '')
     ScrollBars = ssBoth
     TabOrder = 1
-    ExplicitHeight = 527
   end
   object ButtonParse: TButton
     Left = 459
@@ -88,7 +87,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '3'
-      ExplicitLeft = 127
     end
     object etLocalized: TEdit
       Left = 192
@@ -98,7 +96,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '4'
-      ExplicitLeft = 127
     end
     object ButtonAvtoFM: TButton
       Left = 9
@@ -109,7 +106,6 @@ object Form1: TForm1
       Caption = 'Generate base strings'
       TabOrder = 2
       OnClick = ButtonAvtoFMClick
-      ExplicitWidth = 151
     end
   end
   object GroupBox2: TGroupBox
@@ -151,7 +147,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '6'
-      ExplicitLeft = 127
     end
     object etAddLocalized: TEdit
       Left = 192
@@ -161,7 +156,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '7'
-      ExplicitLeft = 127
     end
     object ButtonAvtoCE: TButton
       Left = 9
@@ -172,7 +166,6 @@ object Form1: TForm1
       Caption = 'Generate updated strings'
       TabOrder = 2
       OnClick = ButtonAvtoCEClick
-      ExplicitWidth = 151
     end
     object etAddReplacing: TEdit
       Left = 192
@@ -182,7 +175,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 3
       Text = '5'
-      ExplicitLeft = 127
     end
   end
   object ButtonOpen: TButton
@@ -234,7 +226,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 0
       Text = '0'
-      ExplicitLeft = 127
     end
     object etlanguageCode: TEdit
       Left = 192
@@ -244,7 +235,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 1
       Text = '1'
-      ExplicitLeft = 127
     end
     object etLanguageParentCode: TEdit
       Left = 192
@@ -254,7 +244,6 @@ object Form1: TForm1
       Anchors = [akTop, akRight]
       TabOrder = 2
       Text = '2'
-      ExplicitLeft = 127
     end
   end
   object GroupBox4: TGroupBox
@@ -282,7 +271,6 @@ object Form1: TForm1
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
       Text = 'Localization - String.tsv'
-      ExplicitWidth = 151
     end
     object chbAutoexit: TCheckBox
       Left = 9

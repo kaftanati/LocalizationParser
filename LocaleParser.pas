@@ -213,7 +213,7 @@ begin
                 '    <string name="' + values[i].name + '">' + values[i].val[j] + '</string>');
           end;
 
-          if (values[i].typ = common_type) and (j = 1) then   // common text of base locale
+          if (values[i].typ = common_type) and (j = 1) then // common text of base locale
           begin
             if values[i].section <> '' then
               WriteLn(filecom);
@@ -431,14 +431,24 @@ begin
   for i := 1 to length(strbuff) do
   begin
     if (strbuff[i] <> chr(9)) then
-      str := str + strbuff[i]
-    else
-    begin
-      SetLength(res, col_count + 1);
-      res[col_count] := str;
-      str := '';
-      col_count := col_count + 1;
-    end;
+
+      if (strbuff[i] <> chr(39)) then
+        str := str + strbuff[i]
+      else
+      begin
+        if ((strbuff[i - 1] <> '\') and (i > 0)) then
+          str := str + '\' + strbuff[i]
+        else
+          str := str + strbuff[i];
+      end
+
+      else
+      begin
+        SetLength(res, col_count + 1);
+        res[col_count] := str;
+        str := '';
+        col_count := col_count + 1;
+      end;
     SetLength(res, col_count + 1);
     res[col_count] := str;
   end;
