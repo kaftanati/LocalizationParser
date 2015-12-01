@@ -76,9 +76,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=M:\Dropbox\#DEV\#LOCALE\LocaleParser\LocaleParser.pas
-CursorX=5
-CursorY=495
-TopLine=419
+CursorX=23
+CursorY=483
+TopLine=470
 LeftCol=1
 Elisions=
 Bookmarks=

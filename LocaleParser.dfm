@@ -159,7 +159,7 @@ object Form1: TForm1
     end
     object ButtonAvtoCE: TButton
       Left = 9
-      Top = 101
+      Top = 102
       Width = 216
       Height = 25
       Anchors = [akLeft, akTop, akRight]

@@ -241,6 +241,8 @@ begin
       WriteLn(filexml, '</resources>');
       CloseFile(filexml);
 
+
+
       LogAdd('Locale strings created!');
 
     end;
@@ -479,6 +481,12 @@ begin
   end;
 
   CloseFile(fileMemo);
+
+  DeleteFile('_'+etFilename.Text);
+  Rename(fileMemo, '_'+etFilename.Text);
+
+  DeleteFile(etFilename.Text);
+
   LogAdd('File parsed successfull.');
 
   SetAliasValues();
